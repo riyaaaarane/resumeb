@@ -29,6 +29,20 @@ app.post('/Submit', (req, res) => {
     });
 });
 
+// Fetch all user data
+app.get('/Submit', (req, res) => {
+  UserModel.find()
+    .then((users) => {
+      console.log("Fetched users:", users); // Log fetched data
+      res.json(users[0]); // Send data as JSON
+    })
+    .catch((err) => {
+      console.error("Error fetching users:", err); // Log error
+      res.status(500).json({ error: "Error fetching users" });
+    });
+});
+
+
 
 
 // Start the server
